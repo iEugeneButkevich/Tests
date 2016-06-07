@@ -11,14 +11,14 @@
 @implementation EBPatient
 
 -(BOOL) howAreYou{
-    BOOL isFeelGood = arc4random() % 2;
-    if(!isFeelGood){
+    BOOL iFeelGood = arc4random() % 2;
+    if(!iFeelGood){
         NSLog(@"%@: NO", self.name);
         [self.delegate patientFeelsBad: self];
     } else{
         NSLog(@"%@: YES", self.name);
     }
-    return isFeelGood;
+    return iFeelGood;
 }
 
 -(void) takePill{
