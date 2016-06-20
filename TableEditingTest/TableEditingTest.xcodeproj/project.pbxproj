@@ -212,7 +212,7 @@
 			name = TableEditingTestTests;
 			productName = TableEditingTestTests;
 			productReference = 44CB73F51D11CE780071BC91 /* TableEditingTestTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -221,6 +221,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = EB;
+				LastTestingUpgradeCheck = 0730;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = EugeneButkevich;
 			};
@@ -462,6 +463,7 @@
 				44CB74091D11CE780071BC91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		44CB740A1D11CE780071BC91 /* Build configuration list for PBXNativeTarget "TableEditingTestTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +472,7 @@
 				44CB740C1D11CE780071BC91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
