@@ -48,12 +48,6 @@
     }
 }
 
-#pragma mark - Actions
-
-- (void) actionBackToRoot:(UIBarButtonItem*) sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -73,6 +67,12 @@
     NSString* filePath = [self.path stringByAppendingPathComponent:fileName];
     [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isDirectory];
     return isDirectory;
+}
+
+#pragma mark - Actions
+
+- (void) actionBackToRoot:(UIBarButtonItem*) sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableViewDataSource
