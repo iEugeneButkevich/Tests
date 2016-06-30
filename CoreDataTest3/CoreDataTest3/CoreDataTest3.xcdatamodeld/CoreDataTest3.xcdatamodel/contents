@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
+    <entity name="Car" representedClassName="Car" parentEntity="EBObject" syncable="YES">
+        <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="car" inverseEntity="Student" syncable="YES"/>
+    </entity>
+    <entity name="Course" representedClassName="Course" parentEntity="EBObject" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="courses" inverseEntity="Student" syncable="YES"/>
+        <relationship name="university" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="University" inverseName="courses" inverseEntity="University" syncable="YES"/>
+        <fetchedProperty name="bestStudents" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Student" predicateString="score &gt; 3.75"/>
+        </fetchedProperty>
+        <fetchedProperty name="studentsWithManyCourses" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Student" predicateString="courses.@count &gt;= 4"/>
+        </fetchedProperty>
+    </entity>
+    <entity name="EBObject" representedClassName="EBObject" isAbstract="YES" syncable="YES"/>
+    <entity name="Student" representedClassName="Student" parentEntity="EBObject" syncable="YES">
+        <attribute name="dateOfBirth" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="car" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Car" inverseName="owner" inverseEntity="Car" syncable="YES"/>
+        <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="students" inverseEntity="Course" syncable="YES"/>
+        <relationship name="university" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="University" inverseName="students" inverseEntity="University" syncable="YES"/>
+    </entity>
+    <entity name="University" representedClassName="University" parentEntity="EBObject" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="courses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Course" inverseName="university" inverseEntity="Course" syncable="YES"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Student" inverseName="university" inverseEntity="Student" syncable="YES"/>
+    </entity>
+    <fetchRequest name="FetchStudents" entity="Student" predicateString="score &gt; 3 AND score &lt;= 3.5 AND firstName CONTAINS &quot;e&quot;"/>
+    <elements>
+        <element name="Car" positionX="-1593" positionY="-54" width="128" height="73"/>
+        <element name="EBObject" positionX="-1782" positionY="-207" width="128" height="43"/>
+        <element name="Student" positionX="-1764" positionY="-99" width="128" height="148"/>
+        <element name="University" positionX="-2142" positionY="-43" width="128" height="88"/>
+        <element name="Course" positionX="-1944" positionY="-61" width="128" height="131"/>
+    </elements>
+</model>
