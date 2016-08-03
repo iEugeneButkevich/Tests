@@ -39,7 +39,7 @@
                                                                           action:@selector(actionCancel:)];
     [self.navigationItem setRightBarButtonItem:item animated:NO];
     self.navigationItem.title = @"Login";
-    NSString* urlString = @"https://oauth.vk.com/authorize?client_id=5564162&display=mobile&redirect_uri=hello.there&scope=139286&response_type=token&v=5.53&state=piypiy&revoke=1";
+    NSString* urlString = @"https://oauth.vk.com/authorize?client_id=5564162&scope=139286&&redirect_uri=https://oauth.vk.com/blank.html&display=mobile&response_type=token&v=5.53&state=piypiy&revoke=1";
     NSURL* url = [NSURL URLWithString:urlString];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     webView.delegate = self;
@@ -69,7 +69,7 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSLog(@"URL: %@",[request URL]);
     
-    if ([request.URL.host isEqualToString:@"hello.there"]) {
+    if ([[[request URL] description] rangeOfString:@"#access_token="].location != NSNotFound) {
         AccessToken* token = [[AccessToken alloc] init];
         NSString* query = request.URL.description;
         NSArray* array = [query componentsSeparatedByString:@"#"];
